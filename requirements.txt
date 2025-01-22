@@ -5,3 +5,4 @@ pdf2image
 openai
 numpy
 streamlit
+python-dotenv
