@@ -5,12 +5,13 @@ import cv2
 import numpy as np
 from pdf2image import convert_from_bytes
 import openai
+import os
+
+# Set OpenAI API Key from environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Streamlit App Title
-st.title("Plant Poject P&ID Analysis Tool")
-
-# OpenAI API Key (ensure you store this securely in production)
-openai.api_key = "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"
+st.title("Plant Project P&ID Analysis Tool")
 
 # File Upload Section
 legend_file = st.file_uploader("Upload P&ID Legend (PDF/Image)", type=["pdf", "png", "jpg"])
@@ -54,7 +55,6 @@ def detect_symbols(file):
         if file.type == "application/pdf":
             images = convert_pdf_to_images(file)
             if images:
-                # Process only the first page for simplicity
                 first_page = images[0]
                 image = np.array(first_page)
         else:
