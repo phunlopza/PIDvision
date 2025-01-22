@@ -6,9 +6,13 @@ import numpy as np
 from pdf2image import convert_from_bytes
 import openai
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (for local development)
+load_dotenv()
 
 # Set OpenAI API Key from environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("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")
 
 # Streamlit App Title
 st.title("Plant Project P&ID Analysis Tool")
